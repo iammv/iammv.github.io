@@ -161,6 +161,9 @@ body {
         <h1>
             <span style="color:rgb(129, 29, 42);">G</span><span style="color:rgb(172, 172, 172);">A</span>MES
         </h1>
+                <div class="centered-text">
+        <h2 id="random-heading"></h2>
+        </div>
     </div>
     </div>
 
@@ -177,6 +180,27 @@ body {
         
     </center>
     <script>
+                var headings = [
+            "Welcome to the coal mines!",
+            "¯\_(ツ)_/¯",
+            "( ͡° ͜ʖ ͡°)",
+            "Next is Hm",
+            "Mathia?",
+            "Now 50% more math!",
+            "Insert advertisment here",
+            "Camden loves DogeMiner2",
+            "This website has been blocked by your administator.",
+        ];
+
+        // Function to set a random heading
+        function setRandomHeading() {
+            var randomIndex = Math.floor(Math.random() * headings.length);
+            document.getElementById("random-heading").textContent = headings[randomIndex];
+        }
+
+        // Set a random heading on page load
+        window.onload = setRandomHeading;
+        
     </script>
     
 </body>
