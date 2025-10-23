@@ -19,13 +19,7 @@
   <link rel="shortcut icon" type="image/png" href="./favicon.png">
   <meta name="Keywords" content="Football, Play, Free, Online, Multiplayer, Games, IO, Sports, Scrolling, Friends">
   <meta name="author" content="Blue Wizard Digital">  
- 
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://footballbros.io">
-  <meta property="og:title" content="Football Bros">
-  <meta property="og:description" content="Online multiplayer football! Bone crushing hits, long bombs, and tons more!">
-  <meta property="og:image" content="https://cdn.jsdelivr.net/gh/brodeliver/fb@2/splash.jpg">
-  <link rel="manifest" href="manifest.json">
+
 
 
  
@@ -391,37 +385,11 @@
     //alert("Globals:"+localStorage.getItem("/:Globals").length);
     /////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////
-    var url = window.location.href;
-    if(url.includes("www."))
-    {
-        url = url.replace("www.","");
+    
 
 
-        var f = document.createElement('form');
-        f.action=url;
-        f.method='POST';
-        var i=document.createElement('input');
-        i.type='hidden';
-        i.name='FGlobals';
-        i.value=localStorage.getItem("/:Globals");
-        f.appendChild(i);
-
-
-        document.body.appendChild(f);
-        f.submit();
-    }
-    else  
-    {
-        var aPost = "";
-                var aStorage = localStorage.getItem("/:Globals");
-        var aLen = 0;
-        if(aStorage != null && aStorage.length > 0)
-        {
-            aLen = aStorage.length;
-        }
-        if(aPost.length > aLen) localStorage.setItem("/:Globals", aPost);
-        if(aPost.length > 0 && aPost.length == aLen) localStorage.setItem("/:Globals", aPost);
-    }
+  
+    
     /////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////
 
@@ -868,11 +836,7 @@
 </style>
 
 
-<div id="ad-container" aria-hidden="false" role="dialog" aria-label="Advertisement" style="display: block;">
-  <iframe id="ad-iframe" src="https://script.google.com/macros/s/AKfycbwO0_-Mbrs-AoE1MqbBxyaIzK385M7xGx4jDkq-FDsbR9wNcqft1m3554Np5XINfbRViw/exec" width="768px" height="95px" scrolling="no" frameborder="0" sandbox="allow-scripts allow-popups allow-same-origin"></iframe>
-  <button id="close-ad" class="enabled">Close ↓</button>
-  <div id="ad-right-mask"></div>
-</div>
+
 
 
 <script>
