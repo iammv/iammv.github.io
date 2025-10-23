@@ -391,37 +391,7 @@
 		//alert("Globals:"+localStorage.getItem("/:Globals").length);
 		/////////////////////////////////////////////////////////////////////
 		////////////////////////////////////////////////////////////////////
-		var url = window.location.href;
-		if(url.includes("www."))
-		{
-				url = url.replace("www.","");
 
-
-				var f = document.createElement('form');
-				f.action=url;
-				f.method='POST';
-				var i=document.createElement('input');
-				i.type='hidden';
-				i.name='FGlobals';
-				i.value=localStorage.getItem("/:Globals");
-				f.appendChild(i);
-
-
-				document.body.appendChild(f);
-				f.submit();
-		}
-		else  
-		{
-				var aPost = "";
-								var aStorage = localStorage.getItem("/:Globals");
-				var aLen = 0;
-				if(aStorage != null && aStorage.length > 0)
-				{
-						aLen = aStorage.length;
-				}
-				if(aPost.length > aLen) localStorage.setItem("/:Globals", aPost);
-				if(aPost.length > 0 && aPost.length == aLen) localStorage.setItem("/:Globals", aPost);
-		}
 		/////////////////////////////////////////////////////////////////////
 		////////////////////////////////////////////////////////////////////
 
