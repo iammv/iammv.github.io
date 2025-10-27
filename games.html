@@ -30,7 +30,7 @@
 
         .button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 0px 0px;
     background-color: #c1c1c1;
     color: white;
     text-decoration: none;
@@ -73,12 +73,14 @@
             margin: 0 auto;
         }
 
-        .link-item {
-            flex: 0 0 calc(33.33% - 20px);
-            margin: 10px;
-            width: 300px;
-            height: 300px;
-        }
+.link-item {
+    flex: 0 0 calc(25% - 20px);  /* Buttons take up 25% of container width */
+    margin: 10px;
+    display: flex;
+    justify-content: center;  /* Center individual button */
+    align-items: center;  /* Center individual button */
+}
+
 
         .passcode-container {
             margin-top: 20px;
@@ -270,8 +272,8 @@ body {
                         <p>Created by Run 3</p>
                     </a>
                 </div>    
-                    <div class="btn btn-secondary btn-lg" role="button">
-                    <a href="/Games/COB.html">
+                    <div class="button">
+                    <a href="/Games/COB.html" class="button">
                         <img src="/Images/images.png" >
                         <h4>Call of Battle</h4>
                         <p>Created by o</p>
