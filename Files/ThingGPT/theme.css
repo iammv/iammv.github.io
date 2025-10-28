@@ -227,4 +227,5 @@ color: #555; /* Optional: make slanted text gray */
         height: 30px;
         border-radius: 1;
         padding-bottom: 0;
+        color: red;
     }
