@@ -221,3 +221,10 @@ color: #555; /* Optional: make slanted text gray */
     justify-content: center;
     height: 100vh;
 }
+    .banner {
+        display: inline-block;
+        display: flex;
+        width: 100%;
+        height: 30px;
+        padding-bottom: 0;
+    }
