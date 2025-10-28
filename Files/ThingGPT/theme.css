@@ -228,4 +228,8 @@ color: #555; /* Optional: make slanted text gray */
         border-radius: 1px;
         padding-bottom: 0px;
         background-color: red;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000; 
     }
+    
