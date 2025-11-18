@@ -14,11 +14,7 @@
     <meta property="og:locale" content="en-US" />
     <meta property="og:type" content="website" />
     <style>
-html, body {
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-}
+
 body {
     font-family: "Poppins", sans-serif;
     background: #000 url("/Images/Background.png") center top / cover no-repeat scroll;
@@ -164,12 +160,11 @@ body {
 .link-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    width: 90vw;                  /* ← full-width responsive */
-    max-width: 1500px;            /* ← optional cap so it doesn’t get crazy on 4K screens */
-    margin: 40px auto;            /* ← proper centering + spacing */
+    gap: 20px;
+    width: 90%;                    /* new – replaces max-width */
+    max-width: 1400px;             /* optional – prevents it getting too wide on huge screens */
+    margin: 0 auto 40px auto;      /* better centering */
     padding: 0 20px;
-    box-sizing: border-box;
 }
         
 
@@ -217,8 +212,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;          /* ← changed from height to min-height */
-    padding: 120px 20px 60px;   /* makes room for fixed toolbar */
+    min-height: 100vh;     /* ← changed from height to min-height */
+    padding: 120px 20px 80px;   /* gives breathing room + accounts for fixed toolbar */
     box-sizing: border-box;
 }
 
