@@ -157,14 +157,15 @@ body {
 .glow-white:nth-child(4) { animation-delay: 0.6s; }
 .glow-white:nth-child(5) { animation-delay: 0.8s; }
 
-        .link-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            max-width: 800px;
-            margin: 10px;
-            margin-bottom: 10px;
-        }
+.link-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 90%;                    /* new – replaces max-width */
+    max-width: 1400px;             /* optional – prevents it getting too wide on huge screens */
+    margin: 0 auto 40px auto;      /* better centering */
+    padding: 0 20px;
+}
         
 
         .link-item {
@@ -275,7 +276,7 @@ body {
                     </a>
     </div>
         <h2>ALL GAMES</h2>
-    
+    <div class="link-container">
                     <a href="/Games/Minecraft.html" class="button">
                         <img src="/Images/Minecraft.png" >
                         <h4>Minecraft</h4>
@@ -507,7 +508,7 @@ body {
                         <h4>ULTRAKILL</h4>
                         <p>Doom momento</p>
                     </a>
-        
+                </div>
                 
        
         
