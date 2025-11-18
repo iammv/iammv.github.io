@@ -108,31 +108,35 @@
         box-shadow: 0 8px 30px rgba(129,29,42,0.6);
     }
 }
-.glow-text {
-    color: #811d2a; /* Your red color */
-    text-shadow: 
-        0 0 10px rgba(129, 29, 42, 0.8),
-        0 0 20px rgba(129, 29, 42, 0.6),
-        0 0 40px rgba(129, 29, 42, 0.4),
-        0 0 80px rgba(129, 29, 42, 0.2);
-    animation: pulseGlow 4s infinite alternate;
+
+
+.glow-red {
+    color: rgb(129, 29, 42); 
+    text-shadow:
+        0 0 10px rgba(129, 29, 42, 0.9),
+        0 0 20px rgba(129, 29, 42, 0.7),
+        0 0 40px rgba(129, 29, 42, 0.5),
+        0 0 80px rgba(129, 29, 42, 0.3);
+    animation: pulseRed 4s infinite alternate ease-in-out;
 }
 
-@keyframes pulseGlow {
-    from {
-        text-shadow: 
-            0 0 10px rgba(129, 29, 42, 0.8),
-            0 0 20px rgba(129, 29, 42, 0.6),
-            0 0 40px rgba(129, 29, 42, 0.4),
-            0 0 80px rgba(129, 29, 42, 0.2);
-    }
-    to {
-        text-shadow: 
-            0 0 15px rgba(129, 29, 42, 1),
-            0 0 30px rgba(129, 29, 42, 0.9),
-            0 0 60px rgba(129, 29, 42, 0.7),
-            0 0 100px rgba(129, 29, 42, 0.5);
-    }
+.glow-gray {
+    color: rgb(172, 172, 172); 
+    text-shadow:
+        0 0 10px rgba(172, 172, 172, 0.8),
+        0 0 20px rgba(172, 172, 172, 0.6),
+        0 0 40px rgba(172, 172, 172, 0.4);
+    animation: pulseGray 4s infinite alternate ease-in-out;
+}
+
+@keyframes pulseRed {
+    from { text-shadow: 0 0 10px rgba(129,29,42,0.9), 0 0 20px rgba(129,29,42,0.7), 0 0 40px rgba(129,29,42,0.5), 0 0 80px rgba(129,29,42,0.3); }
+    to   { text-shadow: 0 0 15px rgba(129,29,42,1),   0 0 30px rgba(129,29,42,0.9), 0 0 60px rgba(129,29,42,0.7), 0 0 100px rgba(129,29,42,0.5); }
+}
+
+@keyframes pulseGray {
+    from { text-shadow: 0 0 10px rgba(172,172,172,0.8), 0 0 20px rgba(172,172,172,0.6), 0 0 40px rgba(172,172,172,0.4); }
+    to   { text-shadow: 0 0 15px rgba(172,172,172,1),   0 0 30px rgba(172,172,172,0.8), 0 0 50px rgba(172,172,172,0.6); }
 }
 
         .link-container {
@@ -252,7 +256,7 @@ body {
         <div class="header-container">
         <div class="centered-text">
 <h1>
-    <span class="glow-text">G</span><span class="glow-text">A</span><span style="color:rgb(172, 172, 172);">MES</span>
+    <span class="glow-red">G</span><span class="glow-gray">A</span><span style="color:rgb(172, 172, 172);">MES</span>
 </h1>
                 <div class="centered-text">
         <h2 id="random-heading"></h2>
