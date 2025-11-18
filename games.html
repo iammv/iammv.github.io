@@ -101,31 +101,47 @@
 }
 
 .games-title {
-    font-size: 130px;           /* slightly bigger for extra impact */
+    font-size: 140px;
     font-weight: 900;
-    letter-spacing: 8px;
+    letter-spacing: 12px;
     margin: 0;
-    background: linear-gradient(90deg, 
-        rgb(129, 29, 42),      /* G */
-        rgb(172, 172, 172),    /* A */
-        white 60%);            /* MES = pure white */
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 
-        0 0 20px rgba(255,255,255,0.4),
-        0 0 40px rgba(255,255,255,0.2);
-    animation: wordPulse 5s infinite ease-in-out;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    user-select: none;
 }
 
-/* Individual letters still get their own stronger glow */
-.glow-red   { text-shadow: 0 0 30px #811d2a, 0 0 60px #811d2a; }
-.glow-gray  { text-shadow: 0 0 30px #acacac, 0 0 60px #acacac; }
-.glow-white { text-shadow: 0 0 30px white, 0 0 60px white, 0 0 90px rgba(255,255,255,0.6); }
+.letter {
+    display: inline-block;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateY(0);
+    filter: brightness(1);
+}
 
-@keyframes wordPulse {
-    0%, 100%   { opacity: 0.9; filter: brightness(1); }
-    50%        { opacity: 1;   filter: brightness(1.15); }
+/* Base glow per letter */
+.glow-red   { color: rgb(129, 29, 42);   text-shadow: 0 0 20px #811d2a, 0 0 40px #811d2a; }
+.glow-gray  { color: rgb(172, 172, 172); text-shadow: 0 0 20px #ccc,    0 0 40px #ccc; }
+.glow-white { color: white;             text-shadow: 0 0 20px white,   0 0 50px white, 0 0 80px rgba(255,255,255,0.6); }
+
+/* HOVER — each letter reacts individually */
+.letter:hover {
+    transform: translateY(-20px) scale(1.15);
+    filter: brightness(1.6);
+    z-index: 10;
+}
+
+/* Extra intense glow on hover */
+.glow-red:hover   { text-shadow: 0 0 40px #811d2a, 0 0 80px #811d2a, 0 0 120px #811d2a; }
+.glow-gray:hover  { text-shadow: 0 0 40px #fff,    0 0 80px #fff; }
+.glow-white:hover { text-shadow: 0 0 50px white,  0 0 100px white, 0 0 150px white; }
+
+/* Optional: subtle floating animation when not hovering */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+}
+.games-title:hover .letter:not(:hover) {
+    animation: float 3s infinite ease-in-out;
 }
 
         .link-container {
@@ -245,7 +261,11 @@ body {
         <div class="header-container">
         <div class="centered-text">
 <h1 class="games-title">
-    <span class="glow-red">G</span><span class="glow-gray">A</span><span class="glow-white">M</span><span class="glow-white">E</span><span class="glow-white">S</span>
+    <span class="letter glow-red"   data-letter="G">G</span>
+    <span class="letter glow-gray"  data-letter="A">A</span>
+    <span class="letter glow-white" data-letter="M">M</span>
+    <span class="letter glow-white" data-letter="E">E</span>
+    <span class="letter glow-white" data-letter="S">S</span>
 </h1>
                 <div class="centered-text">
         <h2 id="random-heading"></h2>
