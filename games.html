@@ -212,9 +212,9 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 120px 20px 80px;
-    min-height: auto;          /* ← change only this line */
-    /* or just delete the min-height line completely */
+    min-height: 100vh;     /* ← changed from height to min-height */
+    padding: 120px 20px 80px;   /* gives breathing room + accounts for fixed toolbar */
+    box-sizing: border-box;
 }
 
 .centered-text {
