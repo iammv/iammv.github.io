@@ -15,14 +15,13 @@
     <meta property="og:type" content="website" />
     <style>
 
-        body {
-            font-family: "Poppins", sans-serif;
-            background-image: url("/Images/Background.png");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            color: rgb(255, 255, 255);
-        }
+body {
+    font-family: "Poppins", sans-serif;
+    background: #000 url("/Images/Background.png") center top / cover no-repeat scroll;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
         h1, h4, h5, h6 {
             color: rgb(255, 255, 255);
         }
@@ -207,12 +206,14 @@
             color: white;
             text-decoration: none;
         }
-        .header-container {
+.header-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    min-height: 100vh;     /* ← changed from height to min-height */
+    padding: 120px 20px 80px;   /* gives breathing room + accounts for fixed toolbar */
+    box-sizing: border-box;
 }
 
 .centered-text {
