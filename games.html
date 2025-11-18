@@ -107,20 +107,21 @@
     margin: 0;
     display: flex;
     justify-content: center;
+    user-select: none;
 }
 
+/* Remove any forced white — let each span keep its own color */
 .games-title span {
     display: inline-block;
     animation: wave 6s ease-in-out infinite;
-    color: white;
 }
 
-/* Individual colors + base glow */
-.glow-red   { color: rgb(129, 29, 42);   text-shadow: 0 0 30px #811d2a, 0 0 60px #811d2a; }
-.glow-gray  { color: rgb(172, 172, 172); text-shadow: 0 0 30px #ccc,    0 0 60px #ccc; }
-.glow-white { color: white;             text-shadow: 0 0 30px white,   0 0 70px white; }
+/* Proper colors + glow */
+.glow-red   { color: rgb(129, 29, 42);   text-shadow: 0 0 30px #811d2a, 0 0 70px #811d2a; }
+.glow-gray  { color: rgb(172, 172, 172); text-shadow: 0 0 30px #ccc,    0 0 70px #ccc; }
+.glow-white { color: white;             text-shadow: 0 0 30px white,   0 0 70px white, 0 0 100px rgba(255,255,255,0.6); }
 
-/* Sin wave — each letter delayed a little so it flows like a real wave */
+/* Wave delays so it ripples perfectly */
 .games-title span:nth-child(1) { animation-delay: 0s; }
 .games-title span:nth-child(2) { animation-delay: 0.2s; }
 .games-title span:nth-child(3) { animation-delay: 0.4s; }
