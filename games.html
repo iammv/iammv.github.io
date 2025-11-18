@@ -15,44 +15,14 @@
     <meta property="og:type" content="website" />
     <style>
 
-/* Add this EXACT block to the TOP of <style> on EVERY PAGE (games, FAQ, home, etc.) */
-/* Forces identical perfect background EVERYWHERE - no more differences! */
-
-* {
-    box-sizing: border-box;
-}
-
-html, body {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100%;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
-body {
-    /* Perfect first screen (exactly like FAQ) + seamless repeat on scroll */
-    background-image: 
-        url("/Images/Background.png"),  /* Layer 1: Cover fill */
-        url("/Images/Background.png");  /* Layer 2: Repeat tiles */
-    
-    background-position: 
-        center center,    /* Layer 1: Perfect center fill */
-        center top;       /* Layer 2: Tiles start at top */
-    
-    background-size: 
-        cover,            /* Layer 1: Fills viewport perfectly */
-        auto 100vh;       /* Layer 2: Full-width tiles, viewport height */
-    
-    background-repeat: 
-        no-repeat,        /* Layer 1: No repeat */
-        repeat-y;         /* Layer 2: Vertical repeat only */
-    
-    background-attachment: scroll;  /* Scrolls with page */
-    
-    font-family: "Poppins", sans-serif;
-    color: white;
-}
+        body {
+            font-family: "Poppins", sans-serif;
+            background-image: url("/Images/Background.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
 
         h1, h4, h5, h6 {
             color: rgb(255, 255, 255);
@@ -265,28 +235,9 @@ body {
     font-size: 50px;
     font-weight: normal;
 }
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
 
-body {
-    /* Apply custom scrollbar to the entire page */
-    scrollbar-width: thin;
-    scrollbar-color: #000000 #363636;
-}
 
-/* Style for the scrollbar track */
-::-webkit-scrollbar {
-    width: 10px;
-    background-color: transparent;
-}
 
-/* Style for the scrollbar thumb (the draggable part) */
-::-webkit-scrollbar-thumb {
-    background-color: #aaa;
-    border-radius: 5px;
-}
 
     </style>
 </head>
