@@ -100,43 +100,32 @@
     animation: pulse 3s infinite;
 }
 
-@keyframes pulse {
-    0%, 100% {
-        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-    50% {
-        box-shadow: 0 8px 30px rgba(129,29,42,0.6);
-    }
+.games-title {
+    font-size: 130px;           /* slightly bigger for extra impact */
+    font-weight: 900;
+    letter-spacing: 8px;
+    margin: 0;
+    background: linear-gradient(90deg, 
+        rgb(129, 29, 42),      /* G */
+        rgb(172, 172, 172),    /* A */
+        white 60%);            /* MES = pure white */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 
+        0 0 20px rgba(255,255,255,0.4),
+        0 0 40px rgba(255,255,255,0.2);
+    animation: wordPulse 5s infinite ease-in-out;
 }
 
+/* Individual letters still get their own stronger glow */
+.glow-red   { text-shadow: 0 0 30px #811d2a, 0 0 60px #811d2a; }
+.glow-gray  { text-shadow: 0 0 30px #acacac, 0 0 60px #acacac; }
+.glow-white { text-shadow: 0 0 30px white, 0 0 60px white, 0 0 90px rgba(255,255,255,0.6); }
 
-.glow-red {
-    color: rgb(129, 29, 42); 
-    text-shadow:
-        0 0 10px rgba(129, 29, 42, 0.9),
-        0 0 20px rgba(129, 29, 42, 0.7),
-        0 0 40px rgba(129, 29, 42, 0.5),
-        0 0 80px rgba(129, 29, 42, 0.3);
-    animation: pulseRed 4s infinite alternate ease-in-out;
-}
-
-.glow-gray {
-    color: rgb(172, 172, 172); 
-    text-shadow:
-        0 0 10px rgba(172, 172, 172, 0.8),
-        0 0 20px rgba(172, 172, 172, 0.6),
-        0 0 40px rgba(172, 172, 172, 0.4);
-    animation: pulseGray 4s infinite alternate ease-in-out;
-}
-
-@keyframes pulseRed {
-    from { text-shadow: 0 0 10px rgba(129,29,42,0.9), 0 0 20px rgba(129,29,42,0.7), 0 0 40px rgba(129,29,42,0.5), 0 0 80px rgba(129,29,42,0.3); }
-    to   { text-shadow: 0 0 15px rgba(129,29,42,1),   0 0 30px rgba(129,29,42,0.9), 0 0 60px rgba(129,29,42,0.7), 0 0 100px rgba(129,29,42,0.5); }
-}
-
-@keyframes pulseGray {
-    from { text-shadow: 0 0 10px rgba(172,172,172,0.8), 0 0 20px rgba(172,172,172,0.6), 0 0 40px rgba(172,172,172,0.4); }
-    to   { text-shadow: 0 0 15px rgba(172,172,172,1),   0 0 30px rgba(172,172,172,0.8), 0 0 50px rgba(172,172,172,0.6); }
+@keyframes wordPulse {
+    0%, 100%   { opacity: 0.9; filter: brightness(1); }
+    50%        { opacity: 1;   filter: brightness(1.15); }
 }
 
         .link-container {
@@ -255,8 +244,8 @@ body {
     <center>
         <div class="header-container">
         <div class="centered-text">
-<h1>
-    <span class="glow-red">G</span><span class="glow-gray">A</span><span style="color:rgb(255, 255, 255);">MES</span>
+<h1 class="games-title">
+    <span class="glow-red">G</span><span class="glow-gray">A</span><span class="glow-white">M</span><span class="glow-white">E</span><span class="glow-white">S</span>
 </h1>
                 <div class="centered-text">
         <h2 id="random-heading"></h2>
