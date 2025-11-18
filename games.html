@@ -107,21 +107,44 @@
     margin: 0;
     display: flex;
     justify-content: center;
-    user-select: none;
+    gap: 4px;                    /* small gap so letters don't touch */
 }
 
-/* Remove any forced white — let each span keep its own color */
+/* Each letter floats + glows */
 .games-title span {
     display: inline-block;
     animation: wave 6s ease-in-out infinite;
 }
 
-/* Proper colors + glow */
-.glow-red   { color: rgb(129, 29, 42);   text-shadow: 0 0 30px #811d2a, 0 0 70px #811d2a; }
-.glow-gray  { color: rgb(172, 172, 172); text-shadow: 0 0 30px #ccc,    0 0 70px #ccc; }
-.glow-white { color: white;             text-shadow: 0 0 30px white,   0 0 70px white, 0 0 100px rgba(255,255,255,0.6); }
+/* Colors + strong glow — A is now properly glowing! */
+.glow-red   { 
+    color: rgb(129, 29, 42);
+    text-shadow: 
+        0 0 20px #811d2a,
+        0 0 40px #811d2a,
+        0 0 80px #811d2a,
+        0 0 120px rgba(129, 29, 42, 0.6);
+}
 
-/* Wave delays so it ripples perfectly */
+.glow-gray  { 
+    color: rgb(172, 172, 172);
+    text-shadow: 
+        0 0 20px #acacac,
+        0 0 40px #acacac,
+        0 0 80px #acacac,
+        0 0 110px rgba(172, 172, 172, 0.7);
+}
+
+.glow-white { 
+    color: white;
+    text-shadow: 
+        0 0 20px white,
+        0 0 50px white,
+        0 0 90px white,
+        0 0 130px rgba(255, 255, 255, 0.8);
+}
+
+/* Wave animation with perfect stagger */
 .games-title span:nth-child(1) { animation-delay: 0s; }
 .games-title span:nth-child(2) { animation-delay: 0.2s; }
 .games-title span:nth-child(3) { animation-delay: 0.4s; }
@@ -130,15 +153,14 @@
 
 @keyframes wave {
     0%, 100% {
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
         filter: brightness(1);
     }
     50% {
-        transform: translateY(-25px) scale(1.05);
-        filter: brightness(1.4);
+        transform: translateY(-28px);
+        filter: brightness(1.5);
     }
 }
-
         .link-container {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
