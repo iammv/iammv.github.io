@@ -664,7 +664,6 @@ body {
 
         // Set a random heading on page load
         window.onload = setRandomHeading;
-
 document.addEventListener("DOMContentLoaded", function() {
     const searchInput = document.getElementById("searchInput");
     const buttons = document.querySelectorAll(".link-container .button");
@@ -673,15 +672,17 @@ document.addEventListener("DOMContentLoaded", function() {
     noResults.textContent = "No games found";
     document.querySelector(".link-container").parentNode.insertBefore(noResults, document.querySelector(".link-container"));
 
+
+    const easterEggs = {
+
+        "test":              () => alert("test"),
+    };
+
     searchInput.addEventListener("input", function() {
         const term = searchInput.value.toLowerCase().trim();
         let visibleCount = 0;
-            if (search === "test") {
-        alert("test");
-        return;
-    }
-        buttons.forEach(button => {
 
+        buttons.forEach(button => {
             const title = (button.getAttribute("data-title") || 
                           button.querySelector("h4")?.textContent || "").toLowerCase();
 
@@ -693,9 +694,14 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
-
-
         noResults.style.display = (term !== "" && visibleCount === 0) ? "block" : "none";
+
+
+        if (easterEggs[term]) {
+            easterEggs[term]();
+            searchInput.value = "";
+            searchInput.dispatchEvent(new Event("input"));
+        }
     });
 });
 
