@@ -241,31 +241,21 @@ body {
     font-weight: normal;
 }
 
-/* Fix centering issues caused by <center> tag */
+/* Fixed & perfect search bar – never too wide */
 .search-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
+    padding: 0 20px;
     margin: 40px 0;
+    box-sizing: border-box;
 }
 
-/* Make sure the icon stays perfectly aligned */
 .search-container {
     position: relative;
-    width: 90%;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.search-icon {
-    position: absolute;
-    right: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 26px;
-    height: 26px;
-    color: rgba(255, 255, 255, 0.7);
-    pointer-events: none;
+    width: 100%;
+    max-width: 500px;     /* This is the key fix – limits max width */
+    min-width: 280px;     /* Prevents it from getting too narrow on mobile */
 }
 
 #searchInput {
@@ -280,6 +270,18 @@ body {
     backdrop-filter: blur(10px);
     outline: none;
     transition: all 0.3s;
+    box-sizing: border-box;
+}
+
+.search-icon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 26px;
+    height: 26px;
+    color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
 }
 
 #searchInput::placeholder {
