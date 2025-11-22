@@ -676,7 +676,10 @@ document.addEventListener("DOMContentLoaded", function() {
     searchInput.addEventListener("input", function() {
         const term = searchInput.value.toLowerCase().trim();
         let visibleCount = 0;
-
+            if (search === "test") {
+        alert("test");
+        return;
+    }
         buttons.forEach(button => {
 
             const title = (button.getAttribute("data-title") || 
@@ -689,6 +692,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 button.style.display = "none";
             }
         });
+
 
 
         noResults.style.display = (term !== "" && visibleCount === 0) ? "block" : "none";
