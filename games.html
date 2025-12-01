@@ -794,11 +794,7 @@ const easterEggs = {
     });
 });
 
-const today = new Date();
-const start = new Date(today.getFullYear(), 11, 1);  // Dec 1
-const end = new Date(today.getFullYear(), 11, 26);  // Dec 25 (inclusive)
 
-if (today >= start && today <= end) {
 var embedimSnow = document.getElementById("embedim--snow");
 
 if (!embedimSnow) {
@@ -888,6 +884,7 @@ if (!embedimSnow) {
     const snowInterval = setInterval(createSnowflake, 150); // New flake every 150ms ≈ 400 flakes/min
 
     document.body.appendChild(snowContainer);
+
         var headings = [
             "holly jolly",
             "merry christmas",
@@ -898,36 +895,6 @@ if (!embedimSnow) {
             "chestnuts roasting on an open fire",
             "santa claus is real"
                 ];
-
-} else {
-            var headings = [
-            "aiden has spiky hair",
-            "whoops",
-            "( ͡° ͜ʖ ͡°)",
-            "dementia gaming",
-            "paxton boyd momento",
-            "Now 50% more math!",
-            "Insert advertisment here",
-            "Camden loves DogeMiner2",
-            "This website has been blocked by your administator.",
-            "rest in piece camden",
-            "birddoggin it",
-            "queso cheese",
-            "420",
-            "69",
-            "gabriel nunn",
-            "it's 3:05",
-            "did i getcha?",
-            "team collaboration",
-            "those who know",
-            "the meat and potatoes",
-            "merry christmas",
-            "good grief",
-            "mikey p is my king",
-            "wastina",
-            "michealtree oh michealtree",
-        ];
-}
 function setRandomHeading() {
     const randomIndex = Math.floor(Math.random() * headings.length);
     document.getElementById("random-heading").textContent = headings[randomIndex];
