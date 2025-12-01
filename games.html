@@ -800,116 +800,69 @@ const easterEggs = {
     });
 });
 
-const today = new Date();  
+const today = new Date();
+const start = new Date(today.getFullYear(), 11, 1);  // Dec 1
+const end = new Date(today.getFullYear(), 11, 26);  // Dec 25 (inclusive)
 
-const start = new Date(today.getFullYear(), 11, 1);  
-const end = new Date(today.getFullYear(), 11, 26); 
-
-if (today > start && today < end) {
-
-var embedimSnow = document.getElementById("embedim--snow");
-
-if (!embedimSnow) {
+if (today >= start && today <= end) {
+    // === SNOW EFFECT (December only) ===
     function embRand(min, max) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-function embRandColor() {
-        const colors = [
-            "radial-gradient(circle at top left, #dcf2fd, #60b4f2)",
-            "#dbf2fd",
-            "#d8f8ff",
-            "#b8ddfa",
-            "#ffffff"
-        ];
+    function embRandColor() {
+        const colors = ["#ffffff", "#dbf2fd", "#b8ddfa", "#d8f8ff"];
         return colors[embRand(0, colors.length - 1)];
     }
 
-    var embCSS = `
+    let embCSS = `
         .embedim-snow {
             position: absolute;
             width: 10px;
             height: 10px;
             background: white;
             border-radius: 50%;
-            margin-top: -10px;
             pointer-events: none;
+            top: -10px;
+            animation: snowfall linear infinite;
+        }
+        @keyframes snowfall {
+            0%   { transform: translateY(-20vh) translateX(0vw) rotate(0deg); }
+            100% { transform: translateY(110vh) translateX(20vw) rotate(360deg); }
         }
     `;
 
-    var embHTML = "";
-    var flakeCount = 200;
+    let embHTML = `<style>${embCSS}</style>`;
+    const flakeCount = 180;
 
-    // Dynamically get the full page height (including content below the fold)
-    function getPageHeight() {
-        return Math.max(
-            document.body.scrollHeight,
-            document.body.offsetHeight,
-            document.documentElement.clientHeight,
-            document.documentElement.scrollHeight,
-            document.documentElement.offsetHeight
-        );
+    for (let i = 0; i < flakeCount; i++) {
+        const size = (embRand(3, 12) / 10);
+        const duration = embRand(20, 70);
+        const delay = -embRand(0, 70);
+        const left = embRand(0, 100);
+        const opacity = (embRand(50, 100) / 100).toFixed(2);
+
+        embHTML += `<i class="embedim-snow" style="
+            left: ${left}vw;
+            animation-duration: ${duration}s;
+            animation-delay: ${delay}s;
+            transform: scale(${size});
+            opacity: ${opacity};
+            background: ${embRandColor()};
+        "></i>`;
     }
 
-    var pageHeight = getPageHeight();
-    var vh = window.innerHeight;
-
-    for (let i = 1; i <= flakeCount; i++) {
-        embHTML += `<i class="embedim-snow"></i>`;
-
-        var rndX = embRand(0, 100);           // horizontal position in vw
-        var rndO = embRand(-100, 100) * 0.2;   // slight horizontal drift
-        var rndS = (embRand(3, 10) / 10).toFixed(2); // scale 0.3–1.0
-        var rndOpacity = (embRand(30, 100) / 100).toFixed(2);
-        var animDuration = embRand(50, 100);   // longer fall time for long pages
-        var animDelay = -embRand(0, 40);
-
-        // Convert page height to vh units for the animation
-        var fallDistance = ((pageHeight + vh) / vh) * 150; // go a little past the bottom
-
-        embCSS += `
-            .embedim-snow:nth-child(${i}) {
-                background: ${embRandColor()};
-                opacity: ${rndOpacity};
-                left: ${rndX}vw;
-                transform: scale(${rndS});
-                animation: fall-${i} ${animDuration}s ${animDelay}s linear infinite;
-            }
-            @keyframes fall-${i} {
-                0% {
-                    transform: translateY(-10vh) scale(${rndS});
-                }
-                100% {
-                    transform: translateY(${fallDistance}vh) translateX(${rndO}vw) scale(${rndS});
-                }
-            }
-        `;
-    }
-
-    embedimSnow = document.createElement("div");
-    embedimSnow.id = "embedim--snow";
-    embedimSnow.style.cssText = `
-        position: absolute;
+    const snowContainer = document.createElement("div");
+    snowContainer.id = "embedim--snow";
+    snowContainer.style.cssText = `
+        position: fixed;
         top: 0; left: 0;
-        width: 100%;
-        height: ${pageHeight}px;   /* matches full document height */
+        width: 100%; height: 100%;
         pointer-events: none;
         z-index: 9998;
-        overflow: hidden;
     `;
-
-    embedimSnow.innerHTML = `<style>${embCSS}</style>${embHTML}`;
-    document.body.appendChild(embedimSnow);
-
-    // Optional: re-calculate on resize/scroll if content height changes dynamically
-    window.addEventListener("resize", function () {
-        var newHeight = getPageHeight();
-        if (Math.abs(newHeight - pageHeight) > 200) {
-            document.getElementById("embedim--snow").style.height = newHeight + "px";
-            pageHeight = newHeight;
-        }
-    });
-}
+    snowContainer.innerHTML = embHTML;
+    document.body.appendChild(snowContainer);
         var headings = [
             "holly jolly",
             "merry christmas",
