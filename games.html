@@ -827,6 +827,9 @@ if (!embedimSnow) {
         return items[Math.floor(Math.random() * items.length)];
     };
 
+    var embRand = embRand2,
+        embRandColor = embRandColor2;
+
     var embCSS = `
         .embedim-snow {
             position: absolute;
@@ -846,39 +849,25 @@ if (!embedimSnow) {
 
         var rndX = embRand2(0, 1e6) * 1e-4;
         var rndO = embRand2(-1e5, 1e5) * 1e-4;
-
-        // Random keyframe percentage (30%–80%)
-        var rndT = embRand2(30, 80);
-
+        var rndT = (embRand2(3, 8) * 10).toFixed(2);
         var rndS = (embRand2(0, 1e4) * 1e-4).toFixed(2);
         var rndOpacity = (embRand2(1, 1e4) * 1e-4).toFixed(2);
-
         var animTime = embRand2(10, 30);
         var animDelay = -embRand2(0, 30);
 
         embCSS += `
             .embedim-snow:nth-child(${i}) {
-                background: ${embRandColor2()};
+                background: ${embRandColor()};
                 opacity: ${rndOpacity};
                 transform: translate(${rndX.toFixed(2)}vw, -10px) scale(${rndS});
                 animation: fall-${i} ${animTime}s ${animDelay}s linear infinite;
             }
-
             @keyframes fall-${i} {
                 ${rndT}% {
-                    /* proportional mid-animation height: rndT% of 400vh */
-                    transform: translate(
-                        ${(rndX + rndO).toFixed(2)}vw,
-                        calc(${rndT}% * 4)
-                    ) scale(${rndS});
+                    transform: translate(${(rndX + rndO).toFixed(2)}vw, ${rndT}vh) scale(${rndS});
                 }
-
                 to {
-                    /* final height: full page fall (400vh) */
-                    transform: translate(
-                        ${(rndX + rndO / 2).toFixed(2)}vw,
-                        400vh
-                    ) scale(${rndS});
+                    transform: translate(${(rndX + rndO / 2).toFixed(2)}vw, 105vh) scale(${rndS});
                 }
             }
         `;
@@ -890,14 +879,13 @@ if (!embedimSnow) {
     embedimSnow.innerHTML = `
         <style>
             #embedim--snow {
-                position: absolute;
+                position: absolute; 
                 left: 0;
                 top: 0;
                 width: 100%;
-                height: 400vh;   /* SNOW FALLS THROUGH THE ENTIRE PAGE */
+                height: 100%;
                 overflow: hidden;
                 pointer-events: none;
-                z-index: 9999999;
             }
             ${embCSS}
         </style>
@@ -906,7 +894,6 @@ if (!embedimSnow) {
 
     document.body.appendChild(embedimSnow);
 }
-
 
     </script>
     
