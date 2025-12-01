@@ -799,7 +799,7 @@ const today = new Date();
 const start = new Date(today.getFullYear(), 11, 1);  
 const end = new Date(today.getFullYear(), 11, 26); 
 
-if (today > start && today < end) {
+if (today >= start && today < end) {
 var embedimSnow = document.getElementById("embedim--snow");
 
 if (!embedimSnow) {
