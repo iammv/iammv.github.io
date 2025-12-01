@@ -673,7 +673,22 @@ body {
         
     </center>
     <script>
+        var headings = [
+            "holly jolly",
+            "merry christmas",
+            "ho ho ho",
+            "feliz navidad",
+            "where are you christmas",
+            "all i want for christmas is you",
+            "chestnuts roasting on an open fire",
+            "santa claus is real"
+                ];
 
+        // Function to set a random heading
+        function setRandomHeading() {
+            var randomIndex = Math.floor(Math.random() * headings.length);
+            document.getElementById("random-heading").textContent = headings[randomIndex];
+        }
 
         // Set a random heading on page load
         window.onload = setRandomHeading;
@@ -794,7 +809,6 @@ const easterEggs = {
     });
 });
 
-
 var embedimSnow = document.getElementById("embedim--snow");
 
 if (!embedimSnow) {
@@ -865,12 +879,13 @@ if (!embedimSnow) {
     embedimSnow.innerHTML = `
         <style>
             #embedim--snow {
-                position: absolute; 
+                position: absolute; /* scrolls with page now */
                 left: 0;
                 top: 0;
                 width: 100%;
-                height: 105vh;
+                height: 100%;
                 overflow: hidden;
+                z-index: 9999999;
                 pointer-events: none;
             }
             ${embCSS}
@@ -880,27 +895,6 @@ if (!embedimSnow) {
 
     document.body.appendChild(embedimSnow);
 }
-    // Start spawning
-    const snowInterval = setInterval(createSnowflake, 150); // New flake every 150ms ≈ 400 flakes/min
-
-    document.body.appendChild(snowContainer);
-
-        var headings = [
-            "holly jolly",
-            "merry christmas",
-            "ho ho ho",
-            "feliz navidad",
-            "where are you christmas",
-            "all i want for christmas is you",
-            "chestnuts roasting on an open fire",
-            "santa claus is real"
-                ];
-function setRandomHeading() {
-    const randomIndex = Math.floor(Math.random() * headings.length);
-    document.getElementById("random-heading").textContent = headings[randomIndex];
-}
-
-window.onload = setRandomHeading;
 
     </script>
     
