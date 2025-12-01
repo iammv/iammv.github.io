@@ -675,12 +675,6 @@ body {
     <script>
 
 
-        // Function to set a random heading
-        function setRandomHeading() {
-            var randomIndex = Math.floor(Math.random() * headings.length);
-            document.getElementById("random-heading").textContent = headings[randomIndex];
-        }
-
         // Set a random heading on page load
         window.onload = setRandomHeading;
 document.addEventListener("DOMContentLoaded", function() {
@@ -893,6 +887,7 @@ if (!embedimSnow) {
 }
     // Start spawning
     const snowInterval = setInterval(createSnowflake, 150); // New flake every 150ms ≈ 400 flakes/min
+
         var headings = [
             "holly jolly",
             "merry christmas",
@@ -902,7 +897,7 @@ if (!embedimSnow) {
             "all i want for christmas is you",
             "chestnuts roasting on an open fire",
             "santa claus is real"
-                ];
+        ];
 
 } else {
             var headings = [
@@ -933,6 +928,12 @@ if (!embedimSnow) {
             "michealtree oh michealtree",
         ];
 }
+function setRandomHeading() {
+    const randomIndex = Math.floor(Math.random() * headings.length);
+    document.getElementById("random-heading").textContent = headings[randomIndex];
+}
+
+window.onload = setRandomHeading;
 
     </script>
     
