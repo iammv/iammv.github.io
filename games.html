@@ -863,11 +863,11 @@ function embRandColor() {
         var rndO = embRand(-100, 100) * 0.2;   // slight horizontal drift
         var rndS = (embRand(3, 10) / 10).toFixed(2); // scale 0.3–1.0
         var rndOpacity = (embRand(30, 100) / 100).toFixed(2);
-        var animDuration = embRand(15, 40);   // longer fall time for long pages
+        var animDuration = embRand(50, 100);   // longer fall time for long pages
         var animDelay = -embRand(0, 40);
 
         // Convert page height to vh units for the animation
-        var fallDistance = ((pageHeight + vh) / vh) * 110; // go a little past the bottom
+        var fallDistance = ((pageHeight + vh) / vh) * 150; // go a little past the bottom
 
         embCSS += `
             .embedim-snow:nth-child(${i}) {
