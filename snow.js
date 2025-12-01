@@ -1,5 +1,4 @@
-<!-- widget by Embed.im (Licenses & Credits: https://app.embed.im/licenses.txt) -->
-<script>
+
 var embedimSnow = document.getElementById("embedim--snow");
 
 if (!embedimSnow) {
@@ -86,4 +85,3 @@ if (!embedimSnow) {
 
     document.body.appendChild(embedimSnow);
 }
-</script>
