@@ -834,7 +834,7 @@ if (!embedimSnow) {
         .embedim-snow {
             position: absolute;
             width: 10px;
-            height: 100%;
+            height: 10px;
             background: white;
             border-radius: 50%;
             margin-top: -10px;
@@ -879,13 +879,12 @@ if (!embedimSnow) {
     embedimSnow.innerHTML = `
         <style>
             #embedim--snow {
-                position: absolute; /* scrolls with page now */
+                position: absolute; 
                 left: 0;
                 top: 0;
                 width: 100%;
                 height: 100%;
                 overflow: hidden;
-                z-index: 9999999;
                 pointer-events: none;
             }
             ${embCSS}
