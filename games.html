@@ -17,7 +17,9 @@
 
 body {
     font-family: "Poppins", sans-serif;
-    background: #000 url("/Images/Background.png") center top / cover no-repeat scroll;
+    background: #000 url("/Images/Background.png") center top fixed no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     color: white;
     margin: 0;
     padding: 0;
@@ -193,6 +195,10 @@ body {
             top: 0;
             left: 0;
             width: 100%;
+            z-index: 99999;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(12px); /* damn you apple */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         .logo {
             width: 30px;
@@ -238,6 +244,68 @@ body {
 }
 
 
+.search-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
+    margin: 40px 0;
+    box-sizing: border-box;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;     /* This is the key fix – limits max width */
+    min-width: 280px;     /* Prevents it from getting too narrow on mobile */
+}
+
+#searchInput {
+    width: 100%;
+    padding: 16px 50px 16px 20px;
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    color: white;
+    backdrop-filter: blur(10px);
+    outline: none;
+    transition: all 0.3s;
+    box-sizing: border-box;
+}
+
+.search-icon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 26px;
+    height: 26px;
+    color: rgba(255, 255, 255, 0.7);
+    pointer-events: none;
+}
+
+#searchInput::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#searchInput:focus {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+
+
+
+.no-results {
+    text-align: center;
+    font-size: 24px;
+    margin: 40px;
+    color: rgba(255, 255, 255, 0.6);
+    display: none;
+}
 
 
     </style>
@@ -268,7 +336,18 @@ body {
         <h2 id="random-heading"></h2>
         </div>
     </div>
+</div>
+
+
+<div class="search-wrapper">
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search games..." autocomplete="off">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
     </div>
+</div>
 
     <div class="link-container">
                         <a href="/Files/ThingGPT/index.html" class="button">
@@ -508,36 +587,147 @@ body {
                         <h4>ULTRAKILL</h4>
                         <p>Doom momento</p>
                     </a>
+                    <a href="/Files/FNAF/FNAF1.html" class="button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW9j_7VNzF0GjZPCpobjlnznAMSyWVlY8n_A&s" >
+                        <h4>FNAF 1</h4>
+                        <p>Made by Scott</p>
+                    </a>
+                            <a href="/Files/FNAF/FNAF2.html" class="button">
+                        <img src="/Images/fnaf2.png" >
+                        <h4>FNAF 2</h4>
+                        <p>Made by Scott</p>
+                    </a>
+                        <a href="/Files/FNAF/FNAF3.html" class="button">
+                        <img src="/Images/fnaf3.png" >
+                        <h4>FNAF 3</h4>
+                        <p>Made by Scott</p>
+                    </a>
+                        <a href="/Files/FNAF/FNAF4.html" class="button">
+                        <img src="/Images/fnaf4.png" >
+                        <h4>FNAF 4</h4>
+                        <p>Made by Scott</p>
+                    </a>
+                        <a href="/Files/FNAF/FNAF5.html" class="button">
+                        <img src="/Images/fnaf5.png" >
+                        <h4>FNAF 5</h4>
+                        <p>Made by Scott</p>
+                    </a>
+                        <a href="/Files/FNAF/FNAF6.html" class="button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ88NrQVamIqjz6KG9_ACWBC1pgVnx-jPk_Jw&s" >
+                        <h4>FNAF 6</h4>
+                        <p>Made by Scott</p>
+                    </a>
+                    <a href="/Files/FNAF/FNAFUCN.html" class="button">
+                        <img src="/Images/ucn.png" >
+                        <h4>FNAF UCN</h4>
+                        <p>Made by Scott</p>
+                    </a>
+                        <a href="/Files/MOTO/MotoX3M.html" class="button">
+                        <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=314,height=314,fit=cover,f=auto/2c6d5a46cdbceada277c870ce1c389ee/moto-x3m.jpg" >
+                        <h4>Moto X3M</h4>
+                        <p>Made by CMG</p>
+                    </a>
+                    <a href="/Files/MOTO/MotoX3m2.html" class="button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTb0yWzWMRv8S88GDO22n6F7DljsrRC-76hCQ&s" >
+                        <h4>Moto X3M 2</h4>
+                        <p>Made by CMG</p>
+                    </a>
+                        <a href="/Files/MOTO/MotoX3m3.html" class="button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXzj5kRp8JS28g1hYT_tN0hAAPJ6c-wFHosw&s" >
+                        <h4>Moto X3M 3</h4>
+                        <p>Made by CMG</p>
+                    </a>
+                            <a href="/Files/MOTO/motox3mpoolparty.html" class="button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZiEpMWMwG4OveKwlM0Kup8SRhlFqiZaWu_g&s" >
+                        <h4>Moto X3M Pool Party</h4>
+                        <p>Made by CMG</p>
+                    </a>
+                        <a href="/Files/MOTO/motox3mspookyland.html" class="button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRLq5KeP0_smbDHfI1b9YPvs92aHWhXrom6Q&s" >
+                        <h4>Moto X3M Spooky Land</h4>
+                        <p>Made by CMG</p>
+                    </a>
+                            <a href="/Files/MOTO/motox3mwinter.html" class="button">
+                        <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=314,height=314,fit=cover,f=auto/c28eee5a5924e8a70afb2c1490d9b571/moto-x3m-4-winter.jpeg" >
+                        <h4>Moto X3M Winter</h4>
+                        <p>Made by CMG</p>
+                    </a>
+                        <a href="/Files/Madalin/index.html" class="button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkL0SpHUJe6JopPapksT56qpqiInBf3Nrf4w&s" >
+                        <h4>Madalin Stunt Cars</h4>
+                        <p>Made by Madalin</p>
+                    </a>
+                        <a href="/Files/BigNeonTowerTinySquare/index.html" class="button">
+                        <img src="https://img.poki-cdn.com/cdn-cgi/image/q=78,scq=50,width=314,height=314,fit=cover,f=auto/91866a710df8929427af3e4b0b3502ad/big-neon-tower-vs-tiny-square.png" >
+                        <h4>Big NEON Tower Tiny Square</h4>
+                        <p>Made by CMG</p>
+                    </a>
+                            <a href="/Files/CS1.6/index.html" class="button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7ubB4PK1kgHHJy6wV4tDfyKhvzI60d1EEsw&s" >
+                        <h4>CS 1.6</h4>
+                        <p>Made by Pipe</p>
+                    </a>
+                            <a href="/Games/DisclaimerP.html" class="button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIgXXkd1eNjlYkt6HPQWtapQwa58Qnu1HSaQ&s" >
+                        <h4>Pokemon Platinum</h4>
+                        <p>Made by Nintendon't</p>
+                    </a>
+                        <a href="/Files/WorldGuessr/index.html" class="button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRED4OVVvP-2yV9tpG28F2eCpazDy-kr4llpg&s" >
+                        <h4>WorldGuessr</h4>
+                        <p>Made by Earth</p>
+                    </a>
+                            <a href="/Files/ShootoutGames/RooftopSnipers.html" class="button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLSDYCC3re3lAUGg2dW_Wyy-zFE8zTVYLjrQ&s" >
+                        <h4>Rooftop Snipers</h4>
+                        <p>Made by Gareth</p>
+                    </a>
+                        <a href="/Files/ShootoutGames/GetawayShootout.html" class="button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTKTndKgN4E-oBj4GrvF5vJ5xU7b3waVJrXw&s" >
+                        <h4>Getaway Shootout</h4>
+                        <p>blagh</p>
+                    </a>
+                    <a href="/Files/clcoreball.html" class="button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnTWBJ4K0cbLJwm5q_fRysane_0ctBUQI0Xg&s" >
+                        <h4>Coreball</h4>
+                        <p>remember</p>
+                    </a>
+                    <a href="/Files/clcardrawing.html" class="button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfYKEovNb-YahGqvJ7IK8gAZsfmqTVHNEftg&s" >
+                        <h4>Car Drawing</h4>
+                        <p>barnacle</p>
+                    </a>
+                         <a href="/Files/clonlyup.html" class="button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHWaRpncpOgo2OfLqVxDFFHGQXbhgvgOWWTQ&s" >
+                        <h4>Only Up!</h4>
+                        <p>i'm tired</p>
+                    </a>
+                    <a href="/Files/clsnowrider.html" class="button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQlJTZ1xIgqRPkoz_8tcXyMlIHdjIiNsUhFSQ&s" >
+                        <h4>Snow Rider 3D</h4>
+                        <p>how are you today?</p>
+                    </a>
+                    <a href="/Files/littlealchemy.html" class="button">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPofCt0VOf0tQdCq4CSmTQHXQAq3zQJCj11w&s" >
+                        <h4>Little Alchemy</h4>
+                        <p>After 3 Years</p>
+                    </a>
                 </div>
-                
+
        
         
     </center>
     <script>
         var headings = [
-            "aiden has spiky hair",
-            "whoops",
-            "( ͡° ͜ʖ ͡°)",
-            "dementia gaming",
-            "paxton boyd momento",
-            "Now 50% more math!",
-            "Insert advertisment here",
-            "Camden loves DogeMiner2",
-            "This website has been blocked by your administator.",
-            "rest in piece camden",
-            "birddoggin it",
-            "queso cheese",
-            "420",
-            "69",
-            "gabriel nunn",
-            "it's 3:05",
-            "did i getcha?",
-            "team collaboration",
-            "those who know",
-            "the meat and potatoes",
+            "holly jolly",
             "merry christmas",
-            "good grief"
-        ];
+            "ho ho ho",
+            "feliz navidad",
+            "where are you christmas",
+            "all i want for christmas is you",
+            "chestnuts roasting on an open fire",
+            "santa claus is real"
+                ];
 
         // Function to set a random heading
         function setRandomHeading() {
@@ -547,7 +737,209 @@ body {
 
         // Set a random heading on page load
         window.onload = setRandomHeading;
-        
+document.addEventListener("DOMContentLoaded", function() {
+    const searchInput = document.getElementById("searchInput");
+    const buttons = document.querySelectorAll(".link-container .button");
+    const noResults = document.createElement("div");
+    noResults.className = "no-results";
+    noResults.textContent = "No games found";
+    document.querySelector(".link-container").parentNode.insertBefore(noResults, document.querySelector(".link-container"));
+
+
+
+const easterEggs = {
+
+
+    "67": () => {        
+
+        if (document.getElementById("dance-party-overlay")) return;
+
+        // Create overlay
+        const overlay = document.createElement("div");
+        overlay.id = "dance-party-overlay";
+        overlay.style.cssText = `
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.8) url('https://media.tenor.com/xEc6rOUcWY0AAAAM/sixseven-six.gif') center/cover no-repeat;
+            z-index: 99999; display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+        `;
+
+        const text = document.createElement("h1");
+        text.textContent = "677777";
+        overlay.appendChild(text);
+
+
+        const audio = new Audio("/Files/67.mp3"); 
+        audio.loop = false;
+        audio.volume = 0.8;
+        audio.play();
+
+
+        const cleanup = () => {
+            overlay.remove();
+            audio.pause();
+        };
+        overlay.onclick = cleanup;
+        setTimeout(cleanup, 12000); 
+
+        document.body.appendChild(overlay);
+
+
+        document.body.style.animation = "shake 0.5s infinite";
+        setTimeout(() => document.body.style.animation = "", 12000);
+    },
+    "calculator": () => {        
+
+        if (document.getElementById("dance-party-overlay")) return;
+
+        // Create overlay
+        const overlay = document.createElement("div");
+        overlay.id = "dance-party-overlay";
+        overlay.style.cssText = `
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.8) url('/Images/beauty.png') center/cover no-repeat;
+            z-index: 99999; display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+        `;
+
+        const text = document.createElement("h1");
+        overlay.appendChild(text);
+
+
+        const audio = new Audio("/Files/calc.mp3"); 
+        audio.loop = false;
+        audio.volume = 0.8;
+        audio.play();
+
+
+        const cleanup = () => {
+            overlay.remove();
+            audio.pause();
+        };
+        overlay.onclick = cleanup;
+        setTimeout(cleanup, 12000); 
+
+        document.body.appendChild(overlay);
+
+
+        document.body.style.animation = "shake 0.5s infinite";
+        setTimeout(() => document.body.style.animation = "", 12000);
+    }
+};
+
+    searchInput.addEventListener("input", function() {
+        const term = searchInput.value.toLowerCase().trim();
+        let visibleCount = 0;
+
+        buttons.forEach(button => {
+            const title = (button.getAttribute("data-title") || 
+                          button.querySelector("h4")?.textContent || "").toLowerCase();
+
+            if (term === "" || title.includes(term)) {
+                button.style.display = "";
+                visibleCount++;
+            } else {
+                button.style.display = "none";
+            }
+        });
+
+        noResults.style.display = (term !== "" && visibleCount === 0) ? "block" : "none";
+
+
+        if (easterEggs[term]) {
+            easterEggs[term]();
+            searchInput.value = "";
+            searchInput.dispatchEvent(new Event("input"));
+        }
+    });
+});
+
+var embedimSnow = document.getElementById("embedim--snow");
+
+if (!embedimSnow) {
+
+    let embRand2 = function(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    };
+
+    let embRandColor2 = function() {
+        var items = [
+            "radial-gradient(circle at top left,#dcf2fd,#60b4f2)",
+            "#dbf2fd",
+            "#d8f8ff",
+            "#b8ddfa"
+        ];
+        return items[Math.floor(Math.random() * items.length)];
+    };
+
+    var embRand = embRand2,
+        embRandColor = embRandColor2;
+
+    var embCSS = `
+        .embedim-snow {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            margin-top: -10px;
+        }
+    `;
+
+    var embHTML = "";
+
+    for (let i = 1; i < 200; i++) {
+
+        embHTML += `<i class="embedim-snow"></i>`;
+
+        var rndX = embRand2(0, 1e6) * 1e-4;
+        var rndO = embRand2(-1e5, 1e5) * 1e-4;
+        var rndT = (embRand2(3, 8) * 10).toFixed(2);
+        var rndS = (embRand2(0, 1e4) * 1e-4).toFixed(2);
+        var rndOpacity = (embRand2(1, 1e4) * 1e-4).toFixed(2);
+        var animTime = embRand2(10, 30);
+        var animDelay = -embRand2(0, 30);
+
+        embCSS += `
+            .embedim-snow:nth-child(${i}) {
+                background: ${embRandColor()};
+                opacity: ${rndOpacity};
+                transform: translate(${rndX.toFixed(2)}vw, -10px) scale(${rndS});
+                animation: fall-${i} ${animTime}s ${animDelay}s linear infinite;
+            }
+            @keyframes fall-${i} {
+                ${rndT}% {
+                    transform: translate(${(rndX + rndO).toFixed(2)}vw, ${rndT}vh) scale(${rndS});
+                }
+                to {
+                    transform: translate(${(rndX + rndO / 2).toFixed(2)}vw, 120vh) scale(${rndS});
+                }
+            }
+        `;
+    }
+
+    embedimSnow = document.createElement("div");
+    embedimSnow.id = "embedim--snow";
+
+    embedimSnow.innerHTML = `
+        <style>
+            #embedim--snow {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                pointer-events: none;
+            }
+            ${embCSS}
+        </style>
+        ${embHTML}
+    `;
+
+    document.body.appendChild(embedimSnow);
+}
+
     </script>
     
 </body>
