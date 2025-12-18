@@ -10,10 +10,6 @@
     .hidden-thought {
       display: none;
     }
-    #sendBtn:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
 .banner {
     position: fixed;
     bottom: 0;
@@ -100,7 +96,6 @@
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         apiKey = (await res.text()).trim();
         console.log('Groq key loaded successfully');
-        sendBtn.disabled = false; // Enable the send button once the key is loaded
       } catch (err) {
         console.error('Could not load Groq key:', err);
         addMessage("system", "Error: Failed to load API key. Please try refreshing the page.");
@@ -122,14 +117,6 @@
         }
       });
 
-      applyPromptBtn.addEventListener("click", () => {
-        aiPrompt = promptInput.value.trim();
-        localStorage.setItem("aiPrompt", aiPrompt);
-        localStorage.removeItem("chatHistoryEX");
-        conversationHistory = [];
-        chatWindow.innerHTML = "";
-        addMessage("system", `AI Prompt updated: "${aiPrompt}"`);
-      });
 
       sendBtn.addEventListener("click", async () => {
         const userText = inputField.value.trim();
@@ -149,7 +136,6 @@
             {
               role: "system",
               content:
-                aiPrompt +
                 "HATE."
             },
             ...conversationHistory,
@@ -229,15 +215,8 @@
         return div;
       }
 
-      document.getElementById("dismissDisclaimer").addEventListener("click", () => {
-        disclaimerOverlay.style.display = "none";
-        chatWindow.style.pointerEvents = "auto";
-        chatWindow.style.opacity = "1";
-        document.querySelectorAll('.side-panel, .input-section').forEach(el => {
-          el.style.pointerEvents = "auto";
-          el.style.opacity = "1";
-        });
-      });
+
+
     });
   </script>
 </body>
