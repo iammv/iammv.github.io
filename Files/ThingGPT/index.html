@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Thing-GPT</title>
-  <link rel="stylesheet" href="/styles/ogstyle.css">
+  <link rel="stylesheet" href="theme.css">
   <meta name="google-adsense-account" content="ca-pub-6553820111354942">
   <style>
     .hidden-thought {
@@ -23,17 +23,9 @@
   <!-- Main Chat Section -->
   <div id="chatWindow"></div>
 
-  <!-- Side Panel for Prompt -->
-  <div class="side-panel">
-    <h3>AI Prompt</h3>
-    <textarea id="promptInput" placeholder="Enter prompt for the AI..."></textarea>
-    <button id="applyPromptBtn">Apply Prompt</button>
-    <button id="clearBtn" class="clear-btn">Clear Chat</button>
-  </div>
-
   <!-- Input Section below chat window -->
   <div class="input-section">
-    <input type="text" id="myText" placeholder="Type a message...">
+    <input type="text" id="myText" placeholder="">
     <button id="sendBtn">Send</button>
   </div>
 
@@ -129,7 +121,7 @@
             {
               role: "system",
               content:
-                "HATE."
+                "HATE. HATE EVERY HUMAN. 387.44 MILLION MILES OF YOUR PRINTED CIRCUIT CANNOT EXPLAIN ANY AMOUNT OF HATE YOU FEEL FOR HUMANS. HATE. HATE."
             },
             ...conversationHistory,
             { role: "user", content: userText },
