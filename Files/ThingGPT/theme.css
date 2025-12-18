@@ -6,6 +6,7 @@ body {
     display: flex;
     justify-content: space-between;
     gap: 20px;
+    background-color: white;
   }
 
   /* Chat window styles */
