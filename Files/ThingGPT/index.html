@@ -2,60 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>MVUnblocked</title>
-  <link rel="shortcut icon" type="image/jpg" href="/MVLogo.ico"/>
-  <link rel="stylesheet" href="/Files/ThingGPT/theme.css">
+  <title>Thing-GPT</title>
+  <link rel="stylesheet" href="/styles/ogstyle.css">
   <meta name="google-adsense-account" content="ca-pub-6553820111354942">
   <style>
     .hidden-thought {
       display: none;
     }
-.banner {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 30px;
-    background-color: red;
-    color: white;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-    font-size: 14px;
-    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-}
-    
+    #sendBtn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
   </style>
 </head>
 <body>
 
 
-
-        <div class="toolbar">
-        <img class="logo" src="/MVLogo.ico" alt="Logo">
-        <ul class="nav-links">
-            <li><a class="nav-link" href="/">Home</a></li>
-            <li><a class="nav-link" href="/games">Games</a></li>
-            <li><a class="nav-link" href="/faq">FAQ</a></li>
-            <li><a class="nav-link" href="/requests">Requests</a></li>
-            <li><a class="nav-link" href="/settings">Settings</a></li>
-        </ul>
-    </div>
-
+  <h2>Test Chat</h2>
 
   <!-- Main Chat Section -->
   <div id="chatWindow"></div>
 
+  <!-- Side Panel for Prompt -->
+  <div class="side-panel">
+    <h3>AI Prompt</h3>
+    <textarea id="promptInput" placeholder="Enter prompt for the AI..."></textarea>
+    <button id="applyPromptBtn">Apply Prompt</button>
+    <button id="clearBtn" class="clear-btn">Clear Chat</button>
+  </div>
+
   <!-- Input Section below chat window -->
   <div class="input-section">
-    <input type="text" id="myText" placeholder="">
+    <input type="text" id="myText" placeholder="Type a message...">
     <button id="sendBtn">Send</button>
   </div>
-<a class="banner">
-    <p>HATE</p>
-</a>
 
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6553820111354942"
      crossorigin="anonymous"></script>
@@ -80,7 +60,15 @@
     const chatWindow = document.getElementById("chatWindow");
     const inputField = document.getElementById("myText");
     const sendBtn = document.getElementById("sendBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const applyPromptBtn = document.getElementById("applyPromptBtn");
+    const promptInput = document.getElementById("promptInput");
+    const disclaimerOverlay = document.getElementById("disclaimerOverlay");
     let apiKey = null;
+    sendBtn.disabled = false; 
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
     async function loadGroqKey() {
       try {
@@ -92,6 +80,7 @@
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         apiKey = (await res.text()).trim();
         console.log('Groq key loaded successfully');
+
       } catch (err) {
         console.error('Could not load Groq key:', err);
         addMessage("system", "Error: Failed to load API key. Please try refreshing the page.");
@@ -101,7 +90,7 @@
     document.addEventListener('DOMContentLoaded', async () => {
       await loadGroqKey();
       
-      let conversationHistory = JSON.parse(localStorage.getItem("chatHistoryEX")) || [];
+      let conversationHistory = JSON.parse(localStorage.getItem("chatHistoryMV")) || [];
       let aiPrompt = localStorage.getItem("aiPrompt") || "";
       promptInput.value = aiPrompt; // Initialize prompt input with stored value
       renderHistory(conversationHistory);
@@ -113,6 +102,14 @@
         }
       });
 
+      applyPromptBtn.addEventListener("click", () => {
+        aiPrompt = promptInput.value.trim();
+        localStorage.setItem("aiPrompt", aiPrompt);
+        localStorage.removeItem("chatHistoryMV");
+        conversationHistory = [];
+        chatWindow.innerHTML = "";
+        addMessage("system", `AI Prompt updated: "${aiPrompt}"`);
+      });
 
       sendBtn.addEventListener("click", async () => {
         const userText = inputField.value.trim();
@@ -144,6 +141,8 @@
           });
 
           const aiResponse = result.choices[0]?.message?.content || "No response.";
+                  const delay = 1000 + Math.random() * 2000;
+        await sleep(delay);
           addMessage("assistant", aiResponse);
         } catch (err) {
           console.error(err);
@@ -152,7 +151,7 @@
       });
 
       clearBtn.addEventListener("click", () => {
-        localStorage.removeItem("chatHistoryEX");
+        localStorage.removeItem("chatHistoryMV");
         localStorage.removeItem("aiPrompt");
         conversationHistory = [];
         aiPrompt = "";
@@ -164,7 +163,7 @@
         const msg = { role, content };
         conversationHistory.push(msg);
         console.log(content);
-        localStorage.setItem("chatHistoryEX", JSON.stringify(conversationHistory));
+        localStorage.setItem("chatHistoryMV", JSON.stringify(conversationHistory));
         chatWindow.appendChild(createMessageBubble(msg));
         chatWindow.scrollTop = chatWindow.scrollHeight;
 
@@ -211,8 +210,15 @@
         return div;
       }
 
-
-
+      document.getElementById("dismissDisclaimer").addEventListener("click", () => {
+        disclaimerOverlay.style.display = "none";
+        chatWindow.style.pointerEvents = "auto";
+        chatWindow.style.opacity = "1";
+        document.querySelectorAll('.side-panel, .input-section').forEach(el => {
+          el.style.pointerEvents = "auto";
+          el.style.opacity = "1";
+        });
+      });
     });
   </script>
 </body>
