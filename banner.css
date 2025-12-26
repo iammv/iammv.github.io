@@ -1,0 +1,38 @@
+  #privacy-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #111;
+    color: #fff;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    z-index: 9999;
+  }
+
+  #privacy-banner p {
+    margin: 0;
+    font-size: 14px;
+  }
+
+  #privacy-banner a {
+    color: #4da6ff;
+    text-decoration: underline;
+  }
+
+  #privacy-banner button {
+    background: #4da6ff;
+    color: #000;
+    border: none;
+    padding: 8px 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+
+  #privacy-banner button:hover {
+    background: #79bdff;
+  }

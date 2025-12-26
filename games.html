@@ -787,6 +787,31 @@ body {
        
         
     </center>
+
+  <link rel="stylesheet" href="theme.css">
+    <!-- Privacy Banner -->
+<div id="privacy-banner">
+  <p>
+    This website uses cookies and similar technologies to improve your experience.
+    By continuing to use this site, you agree to our
+    <a href="/privacy.html" target="_blank">Privacy Policy</a>.
+  </p>
+  <button onclick="acceptPrivacy()">Accept</button>
+</div>
+
+
+
+<script>
+  function acceptPrivacy() {
+    localStorage.setItem("privacyAccepted", "true");
+    document.getElementById("privacy-banner").style.display = "none";
+  }
+
+  if (localStorage.getItem("privacyAccepted") === "true") {
+    document.getElementById("privacy-banner").style.display = "none";
+  }
+</script>
+
     <script>
         var headings = [
             "holly jolly",
