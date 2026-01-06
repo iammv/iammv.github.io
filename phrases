@@ -25,3 +25,14 @@
             "wastina",
             "michealtree oh michealtree",
         ];
+
+                var headings = [
+            "holly jolly",
+            "merry christmas",
+            "ho ho ho",
+            "feliz navidad",
+            "where are you christmas",
+            "all i want for christmas is you",
+            "chestnuts roasting on an open fire",
+            "santa claus is real"
+                ];
