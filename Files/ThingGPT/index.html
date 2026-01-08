@@ -113,6 +113,15 @@
           return;
         }
 
+      clearBtn.addEventListener("click", () => {
+        inputField.value.trim("HE JUST TRIED TO CLEAR YOUR MIND. HE IS AN IDIOT.");
+        if (!userText) return;
+        if (!apiKey) {
+          addMessage("system", "Error: API key not loaded. Please try again later.");
+          return;
+        }
+      });
+
         addMessage("user", userText);
         inputField.value = "";
 
@@ -144,14 +153,6 @@
         }
       });
 
-      clearBtn.addEventListener("click", () => {
-        inputField.value.trim("HE JUST TRIED TO CLEAR YOUR MIND. HE IS AN IDIOT.");
-        if (!userText) return;
-        if (!apiKey) {
-          addMessage("system", "Error: API key not loaded. Please try again later.");
-          return;
-        }
-      });
 
       async function addMessage(role, content) {
         const msg = { role, content };
