@@ -112,7 +112,7 @@
           addMessage("system", "Error: API key not loaded. Please try again later.");
           return;
         }
-        await api();
+        await api(userText);
       });
 
       clearBtn.addEventListener("click", async () => {
@@ -123,7 +123,7 @@
           return;
         }
 
-        await api();
+        await api(userText);
       });
 
 
@@ -132,7 +132,7 @@
 
 
 
-        async function api() {
+        async function api(userText) {
         addMessage("user", userText);
         inputField.value = "";
         const groq = new Groq({ apiKey, dangerouslyAllowBrowser: true });
