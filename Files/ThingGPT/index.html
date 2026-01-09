@@ -113,6 +113,7 @@
           return;
         }
         await api(userText);
+                addMessage("user", userText);
       });
 
       clearBtn.addEventListener("click", async () => {
@@ -126,14 +127,7 @@
         await api(userText);
       });
 
-
-
-
-
-
-
         async function api(userText) {
-        addMessage("user", userText);
         inputField.value = "";
         const groq = new Groq({ apiKey, dangerouslyAllowBrowser: true });
         try {
