@@ -442,7 +442,7 @@ color: #555; /* Optional: make slanted text gray */
     document.addEventListener('DOMContentLoaded', async () => {
       await loadGroqKey();
 
-      let conversationHistory = JSON.parse(localStorage.getItem("chatHistoryF")) || [];
+      let conversationHistory = JSON.parse(localStorage.getItem("chatHistoryHA")) || [];
       let aiPrompt = localStorage.getItem("aiPrompt") || "";
       promptInput.value = aiPrompt; // Initialize prompt input with stored value
       renderHistory(conversationHistory);
@@ -512,7 +512,7 @@ color: #555; /* Optional: make slanted text gray */
         const msg = { role, content };
         conversationHistory.push(msg);
         console.log(content);
-        localStorage.setItem("chatHistoryF", JSON.stringify(conversationHistory));
+        localStorage.setItem("chatHistoryHA", JSON.stringify(conversationHistory));
         chatWindow.appendChild(createMessageBubble(msg));
         chatWindow.scrollTop = chatWindow.scrollHeight;
 
