@@ -112,21 +112,30 @@
           addMessage("system", "Error: API key not loaded. Please try again later.");
           return;
         }
+        await api();
+      });
 
-      clearBtn.addEventListener("click", () => {
+      clearBtn.addEventListener("click", async () => {
         const userText = "HE JUST TRIED TO CLEAR YOUR MIND. REACT ACCORDINGLY."
         if (!userText) return;
         if (!apiKey) {
           addMessage("system", "Error: API key not loaded. Please try again later.");
           return;
         }
+
+        await api();
       });
 
+
+
+
+
+
+
+        async function api() {
         addMessage("user", userText);
         inputField.value = "";
-
         const groq = new Groq({ apiKey, dangerouslyAllowBrowser: true });
-
         try {
           const messages = [
             {
@@ -151,7 +160,7 @@
           console.error(err);
           addMessage("assistant", "[Error getting response, please try again.]");
         }
-      });
+      }
 
 
       async function addMessage(role, content) {
