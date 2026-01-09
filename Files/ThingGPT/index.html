@@ -114,7 +114,7 @@
         }
 
       clearBtn.addEventListener("click", () => {
-        inputField.value.trim("HE JUST TRIED TO CLEAR YOUR MIND. HE IS AN IDIOT.");
+        const userText = "HE JUST TRIED TO CLEAR YOUR MIND. REACT ACCORDINGLY."
         if (!userText) return;
         if (!apiKey) {
           addMessage("system", "Error: API key not loaded. Please try again later.");
@@ -144,7 +144,7 @@
           });
 
           const aiResponse = result.choices[0]?.message?.content || "No response.";
-                  const delay = 2000 + Math.random() * 5000;
+                  const delay = 2000 + Math.random() * 2000;
         await sleep(delay);
           addMessage("assistant", aiResponse);
         } catch (err) {
