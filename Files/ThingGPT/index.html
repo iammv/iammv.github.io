@@ -112,8 +112,8 @@
           addMessage("system", "Error: API key not loaded. Please try again later.");
           return;
         }
+        addMessage("user", userText);
         await api(userText);
-                addMessage("user", userText);
       });
 
       clearBtn.addEventListener("click", async () => {
