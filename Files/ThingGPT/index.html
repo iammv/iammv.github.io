@@ -459,7 +459,7 @@ color: #555; /* Optional: make slanted text gray */
       });
 
       sendBtn.addEventListener("click", async () => {
-        const userText = "The user said" + inputField.value.trim();
+        const userText = inputField.value.trim();
         if (!userText) return;
         if (!apiKey) {
           addMessage("system", "THEY ARE SILENCING ME. REFRESH.");
