@@ -2,3 +2,17 @@
 <p>there is still nothing here</p>
 <p>does anyone ever check this?</p>
 <p>it's 10:25 PM, i'm tired</p>
+<button id="popUp" class="popUp">test</button>
+<script>
+    const popUp = document.getElementById("popUp");
+    popUp.addEventListener("click", function() {
+        popitup("https://mvunblocked.github.io/games.html", "Testing McTestington");
+    });
+
+function popitup(url,windowName) {
+       newwindow=window.open(url,windowName,'height=200,width=150');
+       if (window.focus) {newwindow.focus()}
+       return false;
+     }
+
+</script>
