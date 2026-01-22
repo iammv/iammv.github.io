@@ -900,13 +900,14 @@ body {
             "new year new me",
             "really in the big 26?", 
             "was wanted me to add him",
-            "can we get mvunblocked.com unblocked"
+            "can we get mvunblocked.com unblocked",
+            '<img src="/Images/shiloh.jpeg">'
         ];
 
         // Function to set a random heading
         function setRandomHeading() {
             var randomIndex = Math.floor(Math.random() * headings.length);
-            document.getElementById("random-heading").textContent = headings[randomIndex];
+            document.getElementById("random-heading").innerHTML = headings[randomIndex];
         }
 
         // Set a random heading on page load
