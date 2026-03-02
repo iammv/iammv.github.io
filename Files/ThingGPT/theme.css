@@ -1,30 +1,40 @@
 body {
-    font-family: "Poppins", sans-serif;
+    font-family: sans-serif;
     margin: 40px auto;
     padding: 0 16px;
     max-width: 1200px;
     display: flex;
-    justify-content: space-between;
     gap: 20px;
-    background-color: white;
-  }
+}
 
-  /* Chat window styles */
-  #chatWindow {
-    border: 1px solid #9e9e9e;
+/* Chat container to position chat window on the right */
+.chat-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-top: auto;
+    width: 100%;
+    margin-bottom: 29px;
+}
+
+/* Chat window styles */
+#chatWindow {
+    border: 1px solid #ccc;
     padding: 10px;
-    max-height: 500px;
+    max-height: 400px;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+    padding-right: 40px;
     gap: 8px;
     margin-bottom: 10px;
     border-radius: 8px;
-    flex-grow: 1;
-    width: 65%;
-  }
+    width: 100%;
+    margin-left: auto;
+}
 
-  .user-bubble {
+.user-bubble {
     align-self: flex-end;
     background: #007bff;
     color: white;
@@ -33,192 +43,151 @@ body {
     max-width: 75%;
     white-space: pre-wrap;
     word-wrap: break-word;
-  }
+}
 
-  .ai-bubble {
+.ai-bubble {
     align-self: flex-start;
     background: #e0e0e0;
     color: black;
     padding: 8px 12px;
     border-radius: 16px;
     max-width: 75%;
-  }
+}
 
-  /* Side panel for prompt */
-  .side-panel {
+/* Side panel for prompt */
+.side-panel {
     width: 300px;
+    margin-left: auto;
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 8px;
-  }
+}
 
-  /* Input fields and buttons styling */
-  #myText, #apiKey, #promptInput {
+/* Input fields and buttons styling */
+#myText, #apiKey, #promptInput {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
     border-radius: 6px;
     border: 1px solid #ccc;
-  }
+}
 
-  button {
-    padding: 8px 12px;
+button {
+    height: 34px;
     border: none;
     background-color: #28a745;
     color: white;
     border-radius: 6px;
     cursor: pointer;
-  }
+}
 
-  button:hover {
+button:hover {
     background-color: #218838;
-  }
+}
 
-  .clear-btn {
+.clear-btn {
     background-color: #dc3545;
-  }
+}
 
-  /* Styling for input section under chat */
-  .input-section {
+/* Styling for input section - now positioned below chat */
+.input-section {
+    width: 80%; 
+    margin-left: auto; /* Push to the right to align with chat window */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 0; /* Remove top margin since it's now directly below chat */
+}
+
+/* Style the text input to take full width */
+.input-section #myText {
     width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Container for the buttons to display them side by side */
+.input-section .button-container {
     display: flex;
     gap: 10px;
-    margin-top: 10px;
-  }
+}
 
-  .input-section input,
-  .input-section button {
-    width: 48%;
-  }
-  em {
-font-style: italic;
-color: #555; /* Optional: make slanted text gray */
-    }
-    /* Style for the disclaimer overlay */
-    #disclaimerOverlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
-      color: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      text-align: center;
-    }
+.input-section .button-container button {
+    flex: 1; /* Make buttons equal width */
+}
 
-    #disclaimerContent {
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 80%;
-      font-size: 1.2em;
-    }
+em {
+    font-style: italic;
+    color: #555; /* Optional: make slanted text gray */
+}
 
-    #disclaimerContent button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 1em;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    #disclaimerContent button:hover {
-      background-color: #45a049;
-    }
-
-
-    .modal-link {
-  text-decoration: underline;
-  color: #4ecdc4;
-  cursor: pointer;
+.modal-link {
+    text-decoration: underline;
+    color: #4ecdc4;
+    cursor: pointer;
 }
 
 .modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 10000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
 }
 
 .modal-content {
-  background: #222;
-  color: white;
-  padding: 30px;
-  max-width: 600px;
-  border-radius: 10px;
-  position: relative;
-  font-size: 1em;
+    background: #222;
+    color: white;
+    padding: 30px;
+    max-width: 600px;
+    border-radius: 10px;
+    position: relative;
+    font-size: 1em;
 }
 
 .modal-content h3 {
-  margin-top: 0;
+    margin-top: 0;
 }
 
 .modal-content button {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  background: #f44336;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 4px;
-}
-.terms-container {
-  max-height: 400px; /* Adjust height as needed */
-  overflow-y: auto; /* Enable vertical scrolling */
-  padding: 20px;
-  background-color: #f9f9f9; /* Optional: adds a background color */
-  border: 1px solid #ddd; /* Optional: adds a border */
-  margin-bottom: 20px; /* Optional: adds space below */
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
 }
 
-        /* New styles for the navigation toolbar */
-        .toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            background-color: rgba(0, 0, 0, 0.7);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-        }
-        .logo {
-            width: 30px;
-            height: auto;
-        }
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-        }
-        .nav-link {
-            color: white;
-            text-decoration: none;
-        }
-        .header-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+.saul {
+    align-self: flex-start; 
+    margin-bottom: 20px; 
+    margin-left: 50px;
+    border-radius: 10px;
+    border-color: black;
+}
+.saul-image {
+  width: 250px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white; 
+  border: 7px black;       /* optional, gives a clean backdrop */
+}
+
+.saul-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;  
+  border: 7px black;    /* scale without squishing */
 }
